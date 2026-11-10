@@ -2240,3 +2240,99 @@ button:hover {
 }
 
 
+/* Footer alignment */
+.site-footer {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.site-footer .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+}
+
+.site-footer .footer-brand img {
+    display: block;
+    margin: 0 auto;
+}
+
+.site-footer p,
+.site-footer .copyright {
+    text-align: center;
+    width: 100%;
+}
+
+.site-footer .footer-social {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+
+/* Alpha Squad footer alignment */
+.site-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.site-footer .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.site-footer p,
+.site-footer .copyright {
+    text-align: center;
+}
+
+.site-footer .footer-social {
+    display: flex;
+    justify-content: center;
+}
+
+/* Center footer on all pages, including Contact */
+footer.site-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+footer.site-footer .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+footer.site-footer p,
+footer.site-footer .copyright {
+    width: 100%;
+    text-align: center;
+}
+
+footer.site-footer .footer-social {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
