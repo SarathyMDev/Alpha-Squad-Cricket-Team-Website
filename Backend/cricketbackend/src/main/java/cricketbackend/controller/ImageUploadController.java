@@ -1,14 +1,12 @@
 
 package cricketbackend.controller;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.Map;
-import java.util.UUID;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +16,25 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/api/upload")
 @CrossOrigin(origins = {
     "http://127.0.0.1:5500",
-    "http://localhost:5500"
+    "http://localhost:5500",
+    "https://alpha-squad-cricket-team-website.netlify.app"
 })
 public class ImageUploadController {
 
-    private final Path uploadDirectory =
-            Paths.get("uploads").toAbsolutePath().normalize();
+    private final Cloudinary cloudinary;
+
+    public ImageUploadController(
+            @Value("${CLOUDINARY_CLOUD_NAME}") String cloudName,
+            @Value("${CLOUDINARY_API_KEY}") String apiKey,
+            @Value("${CLOUDINARY_API_SECRET}") String apiSecret) {
+
+        this.cloudinary = new Cloudinary(ObjectUtils.asMap(
+            "cloud_name", cloudName,
+            "api_key", apiKey,
+            "api_secret", apiSecret,
+            "secure", true
+        ));
+    }
 
     @PostMapping("/image")
     public ResponseEntity<?> uploadImage(
@@ -32,7 +43,7 @@ public class ImageUploadController {
         try {
             if (file.isEmpty()) {
                 return ResponseEntity.badRequest()
-                        .body(Map.of("message", "Please select an image."));
+                    .body(Map.of("message", "Please select an image."));
             }
 
             String contentType = file.getContentType();
@@ -40,38 +51,26 @@ public class ImageUploadController {
             if (contentType == null ||
                     !contentType.startsWith("image/")) {
                 return ResponseEntity.badRequest()
-                        .body(Map.of("message", "Only image files are allowed."));
+                    .body(Map.of("message", "Only image files are allowed."));
             }
 
-            Files.createDirectories(uploadDirectory);
+            Map<?, ?> result = cloudinary.uploader().upload(
+                file.getBytes(),
+                ObjectUtils.asMap("resource_type", "image")
+            );
 
-            String originalName = Paths.get(file.getOriginalFilename())
-                    .getFileName().toString();
-
-            String extension = "";
-
-            int dotIndex = originalName.lastIndexOf(".");
-            if (dotIndex >= 0) {
-                extension = originalName.substring(dotIndex);
-            }
-
-            String fileName = UUID.randomUUID() + extension;
-
-            Path destination = uploadDirectory.resolve(fileName).normalize();
-
-            Files.copy(file.getInputStream(), destination,
-                    StandardCopyOption.REPLACE_EXISTING);
-
-            String imageUrl = "/uploads/" + fileName;
+            String imageUrl = result.get("secure_url").toString();
 
             return ResponseEntity.ok(Map.of(
-                    "message", "Image uploaded successfully",
-                    "imageUrl", imageUrl
+                "message", "Image uploaded successfully",
+                "imageUrl", imageUrl
             ));
 
-        } catch (IOException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
+
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(Map.of("message", "Image upload failed."));
+                .body(Map.of("message", "Image upload failed."));
         }
     }
 }
