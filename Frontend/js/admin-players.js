@@ -1,7 +1,7 @@
 
-const API_URL = "http://localhost:8080/api/players";
-const UPLOAD_API = "http://localhost:8080/api/upload/image";
-const SERVER_URL = "http://localhost:8080";
+const API_URL = "https://alpha-squad-cricket-team-website.onrender.com/api/players";
+const UPLOAD_API = "https://alpha-squad-cricket-team-website.onrender.com/api/upload/image";
+const SERVER_URL = "https://alpha-squad-cricket-team-website.onrender.com";
 
 const playerForm = document.getElementById("playerForm");
 const playersTableBody = document.getElementById("playersTableBody");

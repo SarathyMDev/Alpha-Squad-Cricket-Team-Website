@@ -15,7 +15,7 @@ if (adminLoginForm) {
 
         try {
             const response = await fetch(
-                "http://localhost:8080/api/auth/login",
+                "https://alpha-squad-cricket-team-website.onrender.com/api/auth/login",
                 {
                     method: "POST",
                     headers: {

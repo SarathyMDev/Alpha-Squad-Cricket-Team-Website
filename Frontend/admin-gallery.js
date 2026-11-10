@@ -1,7 +1,7 @@
 
-const GALLERY_API = "http://localhost:8080/api/gallery";
-const UPLOAD_API = "http://localhost:8080/api/upload/image";
-const SERVER_URL = "http://localhost:8080";
+const GALLERY_API = "https://alpha-squad-cricket-team-website.onrender.com/api/gallery";
+const UPLOAD_API = "https://alpha-squad-cricket-team-website.onrender.com/api/upload/image";
+const SERVER_URL = "https://alpha-squad-cricket-team-website.onrender.com";
 
 const galleryForm = document.getElementById("galleryForm");
 const galleryContainer = document.getElementById("galleryContainer");

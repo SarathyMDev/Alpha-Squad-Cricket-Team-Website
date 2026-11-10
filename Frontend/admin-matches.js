@@ -1,5 +1,5 @@
 
-const API_URL = "http://localhost:8080/api/matches";
+const API_URL = "https://alpha-squad-cricket-team-website.onrender.com/api/matches";
 
 const matchForm = document.getElementById("matchForm");
 const matchesContainer = document.getElementById("matchesContainer");

@@ -18,7 +18,7 @@ async function loadPlayers() {
     try {
 
         const response =
-            await fetch("http://localhost:8080/api/players");
+            await fetch("https://alpha-squad-cricket-team-website.onrender.com/api/players");
 
         if (!response.ok) {
             throw new Error("Unable to fetch players");
@@ -48,7 +48,7 @@ async function loadPlayers() {
 
                 image.src = player.imageUrl.startsWith("http")
                     ? player.imageUrl
-                    : "http://localhost:8080" + player.imageUrl;
+                    : "https://alpha-squad-cricket-team-website.onrender.com" + player.imageUrl;
 
             } else {
 
@@ -125,7 +125,7 @@ async function loadMatches() {
     try {
 
         const response =
-            await fetch("http://localhost:8080/api/matches");
+            await fetch("https://alpha-squad-cricket-team-website.onrender.com/api/matches");
 
         if (!response.ok) {
             throw new Error("Unable to fetch matches");
@@ -223,8 +223,8 @@ async function loadStatistics() {
         // Fetch statistics and player information
         const [statisticsResponse, playersResponse] =
             await Promise.all([
-                fetch("http://localhost:8080/api/statistics"),
-                fetch("http://localhost:8080/api/players")
+                fetch("https://alpha-squad-cricket-team-website.onrender.com/api/statistics"),
+                fetch("https://alpha-squad-cricket-team-website.onrender.com/api/players")
             ]);
 
         if (!statisticsResponse.ok || !playersResponse.ok) {
@@ -359,7 +359,7 @@ async function submitContactForm(event) {
 
         // Send information to Spring Boot
         const response = await fetch(
-            "http://localhost:8080/api/contact",
+            "https://alpha-squad-cricket-team-website.onrender.com/api/contact",
             {
                 method: "POST",
 
@@ -430,7 +430,7 @@ async function loadPublicNews() {
     try {
 
         const response =
-            await fetch("http://localhost:8080/api/news");
+            await fetch("https://alpha-squad-cricket-team-website.onrender.com/api/news");
 
         if (!response.ok) {
             throw new Error("Unable to fetch news");
@@ -457,7 +457,7 @@ async function loadPublicNews() {
 
                 image.src = news.imageUrl.startsWith("http")
                     ? news.imageUrl
-                    : "http://localhost:8080" + news.imageUrl;
+                    : "https://alpha-squad-cricket-team-website.onrender.com" + news.imageUrl;
 
             } else {
 
@@ -507,7 +507,7 @@ async function loadPublicGallery() {
     if (!galleryContainer) return;
 
     try {
-        const response = await fetch("http://localhost:8080/api/gallery");
+        const response = await fetch("https://alpha-squad-cricket-team-website.onrender.com/api/gallery");
 
         if (!response.ok) {
             throw new Error("Failed to load gallery");
@@ -542,7 +542,7 @@ async function loadPublicGallery() {
 
             const imagePath = photos[0].imageUrl.startsWith("http")
                 ? photos[0].imageUrl
-                : "http://localhost:8080" + photos[0].imageUrl;
+                : "https://alpha-squad-cricket-team-website.onrender.com" + photos[0].imageUrl;
 
             const card = document.createElement("div");
             card.className = "gallery-card album-card";
@@ -611,7 +611,7 @@ function openGalleryAlbum(albumName, photos) {
 
         image.src = photo.imageUrl.startsWith("http")
             ? photo.imageUrl
-            : "http://localhost:8080" + photo.imageUrl;
+            : "https://alpha-squad-cricket-team-website.onrender.com" + photo.imageUrl;
 
         image.alt = photo.title;
 
@@ -665,9 +665,9 @@ async function loadHomePage() {
         // Fetch data from backend APIs
         const [playersResponse, matchesResponse, newsResponse] =
             await Promise.all([
-                fetch("http://localhost:8080/api/players"),
-                fetch("http://localhost:8080/api/matches"),
-                fetch("http://localhost:8080/api/news")
+                fetch("https://alpha-squad-cricket-team-website.onrender.com/api/players"),
+                fetch("https://alpha-squad-cricket-team-website.onrender.com/api/matches"),
+                fetch("https://alpha-squad-cricket-team-website.onrender.com/api/news")
             ]);
 
         if (!playersResponse.ok ||
@@ -798,7 +798,7 @@ upcomingMatches.forEach(match => {
                 image.src = player.imageUrl
                     ? (player.imageUrl.startsWith("http")
                         ? player.imageUrl
-                        : "http://localhost:8080" + player.imageUrl)
+                        : "https://alpha-squad-cricket-team-website.onrender.com" + player.imageUrl)
                     : "images/default-player.png";
 
                 const name = document.createElement("h3");
@@ -840,7 +840,7 @@ upcomingMatches.forEach(match => {
 
                     image.src = news.imageUrl.startsWith("http")
                         ? news.imageUrl
-                        : "http://localhost:8080" + news.imageUrl;
+                        : "https://alpha-squad-cricket-team-website.onrender.com" + news.imageUrl;
 
                     image.alt = news.title || "Team news";
                     image.className = "news-image";
@@ -886,7 +886,7 @@ document.addEventListener("DOMContentLoaded", loadHomePage);
 
 async function loadHomeBackground() {
     try {
-        const response = await fetch("http://localhost:8080/api/home-settings");
+        const response = await fetch("https://alpha-squad-cricket-team-website.onrender.com/api/home-settings");
 
         if (!response.ok) {
             throw new Error("Unable to load homepage background");
@@ -899,7 +899,7 @@ async function loadHomeBackground() {
         if (hero && settings.backgroundImageUrl) {
             const imageUrl = settings.backgroundImageUrl.startsWith("http")
                 ? settings.backgroundImageUrl
-                : "http://localhost:8080" + settings.backgroundImageUrl;
+                : "https://alpha-squad-cricket-team-website.onrender.com" + settings.backgroundImageUrl;
 
             hero.style.backgroundImage =
                 `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url("${imageUrl}")`;
@@ -920,7 +920,7 @@ document.addEventListener("DOMContentLoaded", loadHomeBackground);
 // Load editable homepage text from the backend
 async function loadHomepageContent() {
     try {
-        const response = await fetch("http://localhost:8080/api/homepage-content");
+        const response = await fetch("https://alpha-squad-cricket-team-website.onrender.com/api/homepage-content");
 
         if (!response.ok) {
             throw new Error("Failed to load homepage content");
@@ -970,7 +970,7 @@ async function loadHomepageStatistics() {
     try {
         // Load match statistics
         const matchResponse = await fetch(
-            "http://localhost:8080/api/matches/statistics"
+            "https://alpha-squad-cricket-team-website.onrender.com/api/matches/statistics"
         );
 
         if (!matchResponse.ok) {
@@ -991,7 +991,7 @@ async function loadHomepageStatistics() {
 
         // Load total players
         const playerResponse = await fetch(
-            "http://localhost:8080/api/homepage-player-statistics"
+            "https://alpha-squad-cricket-team-website.onrender.com/api/homepage-player-statistics"
         );
 
         if (!playerResponse.ok) {
@@ -1006,7 +1006,7 @@ async function loadHomepageStatistics() {
 
         // Load trophies won
         const trophyResponse = await fetch(
-            "http://localhost:8080/api/homepage-statistics"
+            "https://alpha-squad-cricket-team-website.onrender.com/api/homepage-statistics"
         );
 
         if (!trophyResponse.ok) {

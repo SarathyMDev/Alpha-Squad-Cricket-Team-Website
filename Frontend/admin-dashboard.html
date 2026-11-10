@@ -419,8 +419,8 @@
 
                 const [playersResponse, matchesResponse] =
                     await Promise.all([
-                        fetch("http://localhost:8080/api/players"),
-                        fetch("http://localhost:8080/api/matches")
+                        fetch("https://alpha-squad-cricket-team-website.onrender.com/api/players"),
+                        fetch("https://alpha-squad-cricket-team-website.onrender.com/api/matches")
                     ]);
 
                 if (!playersResponse.ok || !matchesResponse.ok) {
