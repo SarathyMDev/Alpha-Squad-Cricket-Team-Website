@@ -31,8 +31,9 @@ body {
     padding: 18px 7%;
 }
 
-.logo h2 {
+.header .logo h2 {
     font-size: 22px;
+    color: #e0ad35 !important;
 }
 
 .navbar {
