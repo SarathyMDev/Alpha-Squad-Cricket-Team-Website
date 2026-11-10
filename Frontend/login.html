@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Cricket Team</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f1f4f8;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+        }
+
+        .login-container h1 {
+            text-align: center;
+            color: #0b203b;
+            margin-bottom: 10px;
+        }
+
+        .login-container p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .login-container label {
+            display: block;
+            margin: 15px 0 7px;
+            font-weight: bold;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .login-container button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            background: #147d3f;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .login-container button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        #loginStatus {
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #0b203b;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>Admin Login</h1>
+        <p>Cricket Team Management</p>
+
+        <form id="adminLoginForm">
+            <label for="username">Username</label>
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter admin username"
+                autocomplete="username"
+                required
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter admin password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button type="submit" id="loginButton">Login</button>
+        </form>
+
+        <div id="loginStatus" role="status"></div>
+
+        <a class="back-link" href="index.html">Back to Website</a>
+    </div>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>

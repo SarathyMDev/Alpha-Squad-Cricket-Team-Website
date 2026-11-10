@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alpha Squad | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #0b1f38;
+        }
+
+        /* HEADER */
+
+        .admin-header {
+            background: #0b1f38;
+            color: white;
+            padding: 15px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #dcae3f;
+        }
+
+        .admin-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .admin-brand img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+        }
+
+        .admin-brand h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #dcae3f;
+        }
+
+        .admin-brand p {
+            margin: 5px 0 0;
+            font-size: 12px;
+            color: #cbd5e1;
+            letter-spacing: 1px;
+        }
+
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 11px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .logout-btn:hover {
+            background: #b91c1c;
+        }
+
+        /* MAIN CONTENT */
+
+        .admin-content {
+            max-width: 1400px;
+            margin: auto;
+            padding: 35px;
+        }
+
+        .welcome-section {
+            margin-bottom: 30px;
+        }
+
+        .welcome-section h2 {
+            font-size: 28px;
+            margin: 0 0 10px;
+        }
+
+        .welcome-section p {
+            color: #64748b;
+            margin: 0;
+        }
+
+        .gold-text {
+            color: #c99724;
+        }
+
+        /* OVERVIEW CARDS */
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .overview-card {
+            background: white;
+            padding: 25px;
+            border-radius: 13px;
+            border-left: 5px solid #dcae3f;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .overview-card p {
+            color: #64748b;
+            margin: 0 0 12px;
+            font-size: 14px;
+        }
+
+        .overview-card h2 {
+            margin: 0;
+            font-size: 32px;
+            color: #0b1f38;
+        }
+
+        .overview-icon {
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        /* MANAGEMENT SECTION */
+
+        .management-heading {
+            margin-bottom: 20px;
+        }
+
+        .management-heading h2 {
+            font-size: 23px;
+            margin-bottom: 7px;
+        }
+
+        .management-heading p {
+            color: #64748b;
+            margin: 0;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .admin-card {
+            background: white;
+            padding: 25px;
+            border-radius: 13px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            border: 1px solid #e2e8f0;
+            transition: 0.3s ease;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+            border-color: #dcae3f;
+        }
+
+        .admin-card-icon {
+            width: 50px;
+            height: 50px;
+            background: #fff5d9;
+            color: #a87912;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            margin-bottom: 18px;
+        }
+
+        .admin-card h3 {
+            margin: 0 0 10px;
+            color: #0b1f38;
+            font-size: 19px;
+        }
+
+        .admin-card p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 45px;
+        }
+
+        .admin-card a {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 16px;
+            background: #0b1f38;
+            color: #dcae3f;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .admin-card a:hover {
+            background: #dcae3f;
+            color: #0b1f38;
+        }
+
+        /* FOOTER */
+
+        .admin-footer {
+            text-align: center;
+            padding: 22px;
+            margin-top: 40px;
+            background: #0b1f38;
+            color: #cbd5e1;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+            .overview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .admin-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+            .admin-header {
+                padding: 15px;
+            }
+
+            .admin-brand img {
+                width: 42px;
+                height: 42px;
+            }
+
+            .admin-brand h1 {
+                font-size: 18px;
+            }
+
+            .logout-btn {
+                padding: 9px 12px;
+            }
+
+            .admin-content {
+                padding: 20px 15px;
+            }
+
+            .overview-grid,
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-section h2 {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="admin-header">
+
+        <div class="admin-brand">
+            <img src="../images/team-logo.png" alt="Alpha Squad Logo">
+
+            <div>
+                <h1>ALPHA SQUAD</h1>
+                <p>ADMINISTRATION PANEL</p>
+            </div>
+        </div>
+
+        <button class="logout-btn" onclick="logout()">
+            Logout
+        </button>
+
+    </header>
+
+
+    <!-- MAIN DASHBOARD -->
+
+    <main class="admin-content">
+
+        <section class="welcome-section">
+            <h2>Welcome, <span class="gold-text">Administrator!</span></h2>
+            <p>Manage your Alpha Squad cricket team website from one place.</p>
+        </section>
+
+
+        <!-- OVERVIEW -->
+
+        <section class="overview-grid">
+
+            <div class="overview-card">
+                <div class="overview-icon">🏏</div>
+                <p>Total Players</p>
+                <h2 id="totalPlayers">0</h2>
+            </div>
+
+            <div class="overview-card">
+                <div class="overview-icon">🏆</div>
+                <p>Total Matches</p>
+                <h2 id="totalMatches">0</h2>
+            </div>
+
+            <div class="overview-card">
+                <div class="overview-icon">🥇</div>
+                <p>Total Wins</p>
+                <h2 id="totalWins">0</h2>
+            </div>
+
+            <div class="overview-card">
+                <div class="overview-icon">📉</div>
+                <p>Total Losses</p>
+                <h2 id="totalLosses">0</h2>
+            </div>
+
+        </section>
+
+
+        <!-- MANAGEMENT -->
+
+        <section>
+
+            <div class="management-heading">
+                <h2>Website Management</h2>
+                <p>Choose a section to manage your team website.</p>
+            </div>
+
+            <div class="admin-grid">
+
+                <div class="admin-card">
+                    <div class="admin-card-icon">👥</div>
+                    <h3>Manage Players</h3>
+                    <p>Add, edit and delete Alpha Squad player details and profile photos.</p>
+                    <a href="admin-players.html">Manage Players →</a>
+                </div>
+
+                <div class="admin-card">
+                    <div class="admin-card-icon">🏏</div>
+                    <h3>Manage Matches</h3>
+                    <p>Add upcoming matches and update completed match results.</p>
+                    <a href="admin-matches.html">Manage Matches →</a>
+                </div>
+
+                <div class="admin-card">
+                    <div class="admin-card-icon">📊</div>
+                    <h3>Manage Statistics</h3>
+                    <p>Update player performance and cricket statistics.</p>
+                    <a href="admin-statistics.html">Manage Statistics →</a>
+                </div>
+
+                <div class="admin-card">
+                    <div class="admin-card-icon">📰</div>
+                    <h3>Manage News</h3>
+                    <p>Publish, edit and delete Alpha Squad team news.</p>
+                    <a href="admin-news.html">Manage News →</a>
+                </div>
+
+                <div class="admin-card">
+                    <div class="admin-card-icon">📸</div>
+                    <h3>Manage Gallery</h3>
+                    <p>Upload and manage team photographs and albums.</p>
+                    <a href="admin-gallery.html">Manage Gallery →</a>
+                </div>
+
+                <div class="admin-card">
+                    <div class="admin-card-icon">🏠</div>
+                    <h3>Manage Home Page</h3>
+                    <p>Manage homepage content and announcements.</p>
+                    <a href="admin-home.html">Manage Home Page →</a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="admin-footer">
+        © 2026 Alpha Squad. All Rights Reserved.
+        <br>
+        One Team. One Dream. One Victory.
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // Logout function
+        function logout() {
+            sessionStorage.removeItem("adminLoggedIn");
+            window.location.href = "login.html";
+        }
+
+
+        // Load dashboard statistics
+        async function loadDashboardStats() {
+
+            try {
+
+                const [playersResponse, matchesResponse] =
+                    await Promise.all([
+                        fetch("http://localhost:8080/api/players"),
+                        fetch("http://localhost:8080/api/matches")
+                    ]);
+
+                if (!playersResponse.ok || !matchesResponse.ok) {
+                    throw new Error("Unable to fetch dashboard data");
+                }
+
+                const players = await playersResponse.json();
+                const matches = await matchesResponse.json();
+
+                const wins = matches.filter(match =>
+                    /\b(win|won|victory)\b/i.test(match.result || "")
+                ).length;
+
+                const losses = matches.filter(match =>
+                    /\b(loss|lost|defeat|defeated)\b/i.test(match.result || "")
+                ).length;
+
+                document.getElementById("totalPlayers").textContent =
+                    players.length;
+
+                document.getElementById("totalMatches").textContent =
+                    matches.length;
+
+                document.getElementById("totalWins").textContent =
+                    wins;
+
+                document.getElementById("totalLosses").textContent =
+                    losses;
+
+            } catch (error) {
+
+                console.error("Dashboard loading error:", error);
+
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", loadDashboardStats);
+
+    </script>
+
+</body>
+</html>

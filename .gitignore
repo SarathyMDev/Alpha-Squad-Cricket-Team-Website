@@ -1,0 +1,18 @@
+# MySQL and private configuration
+.env
+application-local.properties
+
+# Java / Maven
+Backend/cricketbackend/target/
+*.class
+
+# Uploaded images and runtime files
+Backend/cricketbackend/uploads/
+
+# IDE files
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db

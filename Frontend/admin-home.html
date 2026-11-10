@@ -1,0 +1,1017 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alpha Squad | Manage Home Page</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #0b1f38;
+        }
+
+        .home-admin-header {
+            background: #0b1f38;
+            color: white;
+            padding: 20px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #dcae3f;
+        }
+
+        .home-admin-header h2 {
+            color: #dcae3f;
+            margin: 0;
+        }
+
+        .home-admin-header a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .home-admin-content {
+            max-width: 850px;
+            margin: 35px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+        }
+
+        .home-admin-content h2 {
+            margin-top: 0;
+        }
+
+        .home-admin-content h3 {
+            margin-top: 22px;
+            font-size: 17px;
+        }
+
+        .home-admin-content label {
+            display: block;
+            margin: 20px 0 8px;
+            font-weight: bold;
+        }
+
+        .home-admin-content input,
+        .home-admin-content textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        .home-admin-content textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .save-home-btn,
+        .background-btn {
+            margin-top: 18px;
+            padding: 13px 25px;
+            background: #0b1f38;
+            color: #dcae3f;
+            border: none;
+            border-radius: 7px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .save-home-btn:hover,
+        .background-btn:hover {
+            background: #dcae3f;
+            color: #0b1f38;
+        }
+
+        .remove-background-btn {
+            margin-top: 18px;
+            margin-left: 8px;
+            padding: 13px 25px;
+            background: #b91c1c;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .remove-background-btn:hover {
+            background: #991b1b;
+        }
+
+        .image-preview-container {
+            margin-top: 20px;
+        }
+
+        .background-preview {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+        }
+
+        #homeMessage,
+        #backgroundMessage {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .section-divider {
+            margin: 30px 0;
+            border: none;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        @media(max-width: 600px) {
+            .home-admin-content {
+                margin: 20px 12px;
+                padding: 20px;
+            }
+
+            .home-admin-header {
+                padding: 18px;
+            }
+
+            .remove-background-btn {
+                margin-left: 0;
+            }
+        }
+
+        
+/* Homepage Statistics Admin Manager */
+
+.statistics-admin-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.stat-admin-card {
+    padding: 18px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+.stat-admin-card label {
+    margin: 0 0 10px;
+    color: #0b1f38;
+}
+
+.stat-admin-card input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.stat-admin-card input[readonly] {
+    background: #e2e8f0;
+    color: #475569;
+    cursor: not-allowed;
+}
+
+.stat-admin-card small {
+    display: block;
+    margin-top: 8px;
+    color: #64748b;
+}
+
+#statisticsMessage {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+@media(max-width: 600px) {
+    .statistics-admin-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="home-admin-header">
+
+        <h2>ALPHA SQUAD</h2>
+
+        <a href="admin-dashboard.html">
+            ← Back to Dashboard
+        </a>
+
+    </header>
+
+
+    <main class="home-admin-content">
+
+        <h2>Manage Home Page</h2>
+
+        <p>
+            Update your team's homepage welcome content,
+            announcement and background image.
+        </p>
+
+
+        <!-- Homepage Text Content Form -->
+        <form id="homeContentForm">
+
+            <label for="welcomeHeading">
+                Welcome Heading
+            </label>
+
+            <input
+                type="text"
+                id="welcomeHeading"
+                placeholder="Enter welcome heading"
+                required
+            >
+
+
+            <label for="welcomeDescription">
+                Welcome Description
+            </label>
+
+            <textarea
+                id="welcomeDescription"
+                placeholder="Enter your team introduction..."
+                required
+            ></textarea>
+
+
+            <label for="teamAnnouncement">
+                Team Announcement
+            </label>
+
+            <textarea
+                id="teamAnnouncement"
+                placeholder="Enter an important team announcement..."
+            ></textarea>
+
+
+            <button type="submit" class="save-home-btn">
+                Save Changes
+            </button>
+
+            <p id="homeMessage"></p>
+
+        </form>
+
+
+       
+<hr class="section-divider">
+
+<!-- HOMEPAGE STATISTICS MANAGER -->
+<h2>Manage Homepage Statistics</h2>
+
+<p>
+    Match and player statistics are automatically calculated.
+    Only the trophy count can be edited manually.
+</p>
+
+<div class="statistics-admin-grid">
+
+    <div class="stat-admin-card">
+        <label>Matches Played</label>
+        <input type="number" id="statMatchesPlayed" readonly>
+        <small>Automatically calculated</small>
+    </div>
+
+    <div class="stat-admin-card">
+        <label>Matches Won</label>
+        <input type="number" id="statMatchesWon" readonly>
+        <small>Automatically calculated</small>
+    </div>
+
+    <div class="stat-admin-card">
+        <label>Matches Lost</label>
+        <input type="number" id="statMatchesLost" readonly>
+        <small>Automatically calculated</small>
+    </div>
+
+    <div class="stat-admin-card">
+        <label>Total Players</label>
+        <input type="number" id="statTotalPlayers" readonly>
+        <small>Automatically calculated</small>
+    </div>
+
+    <div class="stat-admin-card">
+        <label for="statTrophiesWon">Trophies Won</label>
+        <input
+            type="number"
+            id="statTrophiesWon"
+            min="0"
+            step="1"
+            placeholder="Enter trophy count"
+        >
+        <small>Editable by Admin</small>
+    </div>
+
+</div>
+
+<button
+    type="button"
+    id="saveStatisticsBtn"
+    class="save-home-btn"
+>
+    Save Trophy Count
+</button>
+
+<p id="statisticsMessage"></p>
+
+<hr class="section-divider">
+
+
+<!-- Homepage Background Image Manager -->
+
+        <h2>Manage Homepage Background</h2>
+
+        <p>
+            Upload any image to change your public homepage background.
+        </p>
+
+
+        <div class="form-group">
+
+            <label for="backgroundImage">
+                Select Background Image
+            </label>
+
+            <input
+                type="file"
+                id="backgroundImage"
+                accept="image/png, image/jpeg, image/webp"
+            >
+
+
+            <!-- Selected Image Preview -->
+            <div class="image-preview-container">
+
+                <h3>Selected Image Preview</h3>
+
+                <img
+                    id="backgroundPreview"
+                    class="background-preview"
+                    src=""
+                    alt="Selected Background Preview"
+                >
+
+            </div>
+
+
+            <!-- Current Active Background -->
+            <div class="image-preview-container">
+
+                <h3>Currently Active Background</h3>
+
+                <img
+                    id="currentBackgroundPreview"
+                    class="background-preview"
+                    src=""
+                    alt="Current Homepage Background"
+                >
+
+            </div>
+
+
+            <button
+                type="button"
+                id="saveBackgroundBtn"
+                class="background-btn"
+            >
+                Save Background Image
+            </button>
+
+
+            <button
+                type="button"
+                id="removeBackgroundBtn"
+                class="remove-background-btn"
+            >
+                Remove Background
+            </button>
+
+
+            <p id="backgroundMessage"></p>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        // ==========================================
+        // API BASE URL
+        // ==========================================
+
+        const API_URL = "http://localhost:8080";
+
+
+        // ==========================================
+        // HOMEPAGE CONTENT - LOAD FROM MYSQL
+        // ==========================================
+
+        async function loadHomepageContent() {
+
+            const message = document.getElementById("homeMessage");
+
+            try {
+
+                const response = await fetch(
+                    API_URL + "/api/homepage-content"
+                );
+
+                if (!response.ok) {
+                    throw new Error("Unable to load homepage content.");
+                }
+
+                const content = await response.json();
+
+                document.getElementById("welcomeHeading").value =
+                    content.welcomeHeading || "";
+
+                document.getElementById("welcomeDescription").value =
+                    content.welcomeDescription || "";
+
+                document.getElementById("teamAnnouncement").value =
+                    content.teamAnnouncement || "";
+
+            } catch (error) {
+
+                console.error("Homepage content error:", error);
+
+                message.textContent = error.message;
+                message.style.color = "red";
+
+            }
+        }
+
+
+        // ==========================================
+        // HOMEPAGE CONTENT - SAVE TO MYSQL
+        // ==========================================
+
+        document.getElementById("homeContentForm")
+            .addEventListener("submit", async function(event) {
+
+                event.preventDefault();
+
+                const message = document.getElementById("homeMessage");
+
+                const content = {
+
+                    welcomeHeading:
+                        document.getElementById("welcomeHeading").value.trim(),
+
+                    welcomeDescription:
+                        document.getElementById("welcomeDescription").value.trim(),
+
+                    teamAnnouncement:
+                        document.getElementById("teamAnnouncement").value.trim()
+
+                };
+
+                if (!content.welcomeHeading || !content.welcomeDescription) {
+
+                    message.textContent =
+                        "Please enter the welcome heading and description.";
+
+                    message.style.color = "red";
+
+                    return;
+                }
+
+                try {
+
+                    message.textContent = "Saving homepage content...";
+                    message.style.color = "#b7791f";
+
+                    const response = await fetch(
+                        API_URL + "/api/homepage-content",
+                        {
+                            method: "PUT",
+
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+
+                            body: JSON.stringify(content)
+                        }
+                    );
+
+                    if (!response.ok) {
+                        throw new Error("Unable to save homepage content.");
+                    }
+
+                    message.textContent =
+                        "Homepage content saved successfully!";
+
+                    message.style.color = "green";
+
+                } catch (error) {
+
+                    console.error("Save content error:", error);
+
+                    message.textContent = "Error: " + error.message;
+
+                    message.style.color = "red";
+
+                }
+
+            });
+
+
+        // ==========================================
+        // BACKGROUND IMAGE ELEMENTS
+        // ==========================================
+
+        const backgroundInput =
+            document.getElementById("backgroundImage");
+
+        const backgroundPreview =
+            document.getElementById("backgroundPreview");
+
+        const currentBackgroundPreview =
+            document.getElementById("currentBackgroundPreview");
+
+        const backgroundMessage =
+            document.getElementById("backgroundMessage");
+
+
+        // ==========================================
+        // LOAD CURRENT BACKGROUND IMAGE
+        // ==========================================
+
+        async function loadCurrentBackground() {
+
+            try {
+
+                const response = await fetch(
+                    API_URL + "/api/home-settings"
+                );
+
+                if (!response.ok) {
+                    throw new Error("Unable to load current background.");
+                }
+
+                const settings = await response.json();
+
+                if (settings.backgroundImageUrl) {
+
+                    const imageUrl =
+                        settings.backgroundImageUrl.startsWith("http")
+                        ? settings.backgroundImageUrl
+                        : API_URL + settings.backgroundImageUrl;
+
+                    currentBackgroundPreview.src = imageUrl;
+
+                    currentBackgroundPreview.style.display = "block";
+
+                } else {
+
+                    currentBackgroundPreview.style.display = "none";
+
+                    currentBackgroundPreview.removeAttribute("src");
+
+                }
+
+            } catch (error) {
+
+                console.error("Background loading error:", error);
+
+            }
+
+        }
+
+
+        // ==========================================
+        // PREVIEW SELECTED BACKGROUND IMAGE
+        // ==========================================
+
+        let selectedImagePreviewUrl = null;
+
+        backgroundInput.addEventListener("change", function() {
+
+            const file = this.files[0];
+
+            if (selectedImagePreviewUrl) {
+
+                URL.revokeObjectURL(selectedImagePreviewUrl);
+
+                selectedImagePreviewUrl = null;
+
+            }
+
+            if (file) {
+
+                selectedImagePreviewUrl = URL.createObjectURL(file);
+
+                backgroundPreview.src = selectedImagePreviewUrl;
+
+                backgroundPreview.style.display = "block";
+
+            } else {
+
+                backgroundPreview.style.display = "none";
+
+            }
+
+        });
+
+
+        // ==========================================
+        // SAVE BACKGROUND IMAGE
+        // ==========================================
+
+        document.getElementById("saveBackgroundBtn")
+            .addEventListener("click", async function() {
+
+                const file = backgroundInput.files[0];
+
+                if (!file) {
+
+                    backgroundMessage.textContent =
+                        "Please select an image first.";
+
+                    backgroundMessage.style.color = "red";
+
+                    return;
+
+                }
+
+                if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+
+                    backgroundMessage.textContent =
+                        "Please select JPG, PNG or WEBP image.";
+
+                    backgroundMessage.style.color = "red";
+
+                    return;
+
+                }
+
+                if (file.size > 5 * 1024 * 1024) {
+
+                    backgroundMessage.textContent =
+                        "Image size must be less than 5 MB.";
+
+                    backgroundMessage.style.color = "red";
+
+                    return;
+
+                }
+
+                try {
+
+                    backgroundMessage.textContent = "Uploading image...";
+
+                    backgroundMessage.style.color = "#b7791f";
+
+                    const formData = new FormData();
+
+                    formData.append("file", file);
+
+
+                    // Upload image
+                    const uploadResponse = await fetch(
+                        API_URL + "/api/upload/image",
+                        {
+                            method: "POST",
+                            body: formData
+                        }
+                    );
+
+                    if (!uploadResponse.ok) {
+                        throw new Error("Image upload failed.");
+                    }
+
+                    const uploadResult = await uploadResponse.json();
+
+                    console.log("Image Upload Response:", uploadResult);
+
+                    if (!uploadResult.imageUrl) {
+                        throw new Error("Image URL was not returned by the server.");
+                    }
+
+
+                    // Save image URL to MySQL
+                    const saveResponse = await fetch(
+                        API_URL + "/api/home-settings",
+                        {
+                            method: "PUT",
+
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                backgroundImageUrl: uploadResult.imageUrl
+                            })
+                        }
+                    );
+
+                    if (!saveResponse.ok) {
+                        throw new Error("Could not save background image.");
+                    }
+
+
+                    backgroundMessage.textContent =
+                        "Background image saved successfully!";
+
+                    backgroundMessage.style.color = "green";
+
+                    backgroundInput.value = "";
+
+                    backgroundPreview.style.display = "none";
+
+                    if (selectedImagePreviewUrl) {
+
+                        URL.revokeObjectURL(selectedImagePreviewUrl);
+
+                        selectedImagePreviewUrl = null;
+
+                    }
+
+                    await loadCurrentBackground();
+
+                } catch (error) {
+
+                    console.error("Background save error:", error);
+
+                    backgroundMessage.textContent =
+                        "Error: " + error.message;
+
+                    backgroundMessage.style.color = "red";
+
+                }
+
+            });
+
+
+        // ==========================================
+        // REMOVE BACKGROUND IMAGE
+        // ==========================================
+
+        document.getElementById("removeBackgroundBtn")
+            .addEventListener("click", async function() {
+
+                const confirmRemove = confirm(
+                    "Are you sure you want to restore the default homepage background?"
+                );
+
+                if (!confirmRemove) {
+                    return;
+                }
+
+                try {
+
+                    backgroundMessage.textContent = "Removing background...";
+
+                    backgroundMessage.style.color = "#b7791f";
+
+                    const response = await fetch(
+                        API_URL + "/api/home-settings",
+                        {
+                            method: "PUT",
+
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                backgroundImageUrl: null
+                            })
+                        }
+                    );
+
+                    if (!response.ok) {
+                        throw new Error("Could not remove background image.");
+                    }
+
+                    backgroundInput.value = "";
+
+                    backgroundPreview.style.display = "none";
+
+                    if (selectedImagePreviewUrl) {
+
+                        URL.revokeObjectURL(selectedImagePreviewUrl);
+
+                        selectedImagePreviewUrl = null;
+
+                    }
+
+                    await loadCurrentBackground();
+
+                    backgroundMessage.textContent =
+                        "Background removed successfully! Default background restored.";
+
+                    backgroundMessage.style.color = "green";
+
+                } catch (error) {
+
+                    console.error("Background removal error:", error);
+
+                    backgroundMessage.textContent =
+                        "Error: " + error.message;
+
+                    backgroundMessage.style.color = "red";
+
+                }
+
+            });
+
+
+
+            
+// ==========================================
+// HOMEPAGE STATISTICS - LOAD DATA
+// ==========================================
+
+async function loadHomepageStatistics() {
+
+    const message = document.getElementById("statisticsMessage");
+
+    try {
+
+        message.textContent = "Loading statistics...";
+        message.style.color = "#b7791f";
+
+        // Load match statistics
+        const matchResponse = await fetch(
+            API_URL + "/api/matches/statistics"
+        );
+
+        if (!matchResponse.ok) {
+            throw new Error("Unable to load match statistics.");
+        }
+
+        const matchData = await matchResponse.json();
+
+        document.getElementById("statMatchesPlayed").value =
+            matchData.matchesPlayed ?? 0;
+
+        document.getElementById("statMatchesWon").value =
+            matchData.matchesWon ?? 0;
+
+        document.getElementById("statMatchesLost").value =
+            matchData.matchesLost ?? 0;
+
+
+        // Load total players
+        const playerResponse = await fetch(
+            API_URL + "/api/homepage-player-statistics"
+        );
+
+        if (!playerResponse.ok) {
+            throw new Error("Unable to load player statistics.");
+        }
+
+        const playerData = await playerResponse.json();
+
+        document.getElementById("statTotalPlayers").value =
+            playerData.totalPlayers ?? 0;
+
+
+        // Load trophy count
+        const trophyResponse = await fetch(
+            API_URL + "/api/homepage-statistics"
+        );
+
+        if (!trophyResponse.ok) {
+            throw new Error("Unable to load trophy statistics.");
+        }
+
+        const trophyData = await trophyResponse.json();
+
+        document.getElementById("statTrophiesWon").value =
+            trophyData.trophiesWon ?? 0;
+
+
+        message.textContent = "Statistics loaded successfully!";
+        message.style.color = "green";
+
+    } catch (error) {
+
+        console.error("Statistics loading error:", error);
+
+        message.textContent = "Error: " + error.message;
+        message.style.color = "red";
+
+    }
+}
+
+
+// ==========================================
+// SAVE TROPHY COUNT
+// ==========================================
+
+document.getElementById("saveStatisticsBtn")
+    .addEventListener("click", async function() {
+
+        const message = document.getElementById("statisticsMessage");
+
+        const trophiesWon = Number(
+            document.getElementById("statTrophiesWon").value
+        );
+
+        if (
+            document.getElementById("statTrophiesWon").value.trim() === "" ||
+            !Number.isInteger(trophiesWon) ||
+            trophiesWon < 0
+        ) {
+
+            message.textContent =
+                "Please enter a valid non-negative whole number for trophies.";
+
+            message.style.color = "red";
+
+            return;
+        }
+
+        try {
+
+            message.textContent = "Saving trophy count...";
+            message.style.color = "#b7791f";
+
+            const response = await fetch(
+                API_URL + "/api/homepage-statistics",
+                {
+                    method: "PUT",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        trophiesWon: trophiesWon
+                    })
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("Unable to save trophy count.");
+            }
+
+            const result = await response.json();
+
+            document.getElementById("statTrophiesWon").value =
+                result.trophiesWon;
+
+            message.textContent =
+                "Trophy count saved successfully!";
+
+            message.style.color = "green";
+
+        } catch (error) {
+
+            console.error("Trophy save error:", error);
+
+            message.textContent = "Error: " + error.message;
+            message.style.color = "red";
+
+        }
+
+    });
+
+
+        // ==========================================
+        // LOAD ALL DATA WHEN ADMIN PAGE OPENS
+        // ==========================================
+
+        loadHomepageContent();
+
+        loadCurrentBackground();
+
+        loadHomepageStatistics();
+
+    </script>
+
+</body>
+
+</html>

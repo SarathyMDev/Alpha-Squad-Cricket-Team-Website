@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Matches - Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .admin-match-section {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 25px;
+        }
+
+        .admin-match-section form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .admin-match-section input,
+        .admin-match-section select,
+        .admin-match-section button {
+            padding: 12px;
+            width: 100%;
+        }
+
+        .admin-match-section button {
+            cursor: pointer;
+        }
+
+        .match-admin-card {
+            background: white;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0002;
+        }
+
+        .match-admin-card button {
+            width: auto;
+            margin: 8px 5px 0 0;
+        }
+
+        @media(max-width: 600px) {
+            .admin-match-section form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="admin-match-section">
+        <h1>Manage Cricket Matches</h1>
+
+        <h2 id="formTitle">Add New Match</h2>
+
+        <form id="matchForm">
+            <input type="hidden" id="matchId">
+
+            <input type="text" id="opponent"
+                   placeholder="Opponent Team" required>
+
+            <input type="date" id="matchDate" required>
+
+            <input type="time" id="matchTime">
+
+            <input type="text" id="venue"
+                   placeholder="Venue" required>
+
+            <input type="text" id="ourScore"
+                   placeholder="Our Score">
+
+            <input type="text" id="opponentScore"
+                   placeholder="Opponent Score">
+
+            <input type="text" id="result"
+                   placeholder="Match Result">
+
+            <select id="status">
+                <option value="Upcoming">Upcoming</option>
+                <option value="Completed">Completed</option>
+                <option value="Live">Live</option>
+            </select>
+
+            <button type="submit" id="saveButton">Add Match</button>
+            <button type="button" onclick="resetMatchForm()">Clear Form</button>
+        </form>
+
+        <p id="message"></p>
+
+        <h2>Existing Matches</h2>
+        <div id="matchesContainer">Loading matches...</div>
+    </section>
+
+    <script src="admin-matches.js"></script>
+</body>
+</html>

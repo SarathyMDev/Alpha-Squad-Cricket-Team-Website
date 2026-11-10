@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Gallery</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .admin-gallery {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        .gallery-form {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .gallery-form input,
+        .gallery-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        .gallery-form button,
+        .gallery-card button {
+            padding: 10px 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .admin-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px #0002;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .gallery-card button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="admin-gallery">
+
+        <h1>Manage Cricket Gallery</h1>
+
+        <p><a href="admin-dashboard.html">← Back to Dashboard</a></p>
+
+        <section class="gallery-form">
+
+            <h2 id="formTitle">Add Gallery Image</h2>
+
+            <form id="galleryForm">
+
+                <input type="hidden" id="galleryId">
+
+                <input type="text" id="title"
+                       placeholder="Image Title" required>
+
+                <textarea id="description"
+                          placeholder="Image Description"></textarea>
+
+               <label for="imageFiles">Select Multiple Images:</label>
+               <input type="file"id="imageFiles" accept="image/*" multiple>
+               
+                <button type="submit" id="saveButton">
+                    Add Image
+                </button>
+
+                <button type="button" id="clearButton">
+                    Clear Form
+                </button>
+
+            </form>
+
+            <p id="galleryMessage"></p>
+
+        </section>
+
+        <h2>Existing Gallery Images</h2>
+
+        <div id="galleryContainer" class="admin-gallery-grid">
+            Loading images...
+        </div>
+
+    </main>
+
+    <script src="admin-gallery.js"></script>
+
+</body>
+</html>

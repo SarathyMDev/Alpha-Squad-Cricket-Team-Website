@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Player Statistics</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <section class="admin-statistics-section">
+
+        <h1>Manage Player Statistics</h1>
+
+        <h2>Add / Update Statistics</h2>
+
+        <form id="statisticsForm">
+
+            <select id="playerId" required>
+                <option value="">Select Player</option>
+            </select>
+
+            <input type="number" id="matchesPlayed"
+                   placeholder="Matches Played" min="0" required>
+
+            <input type="number" id="runs"
+                   placeholder="Total Runs" min="0" required>
+
+            <input type="number" id="battingAverage"
+                   placeholder="Batting Average" min="0" step="0.01">
+
+            <input type="number" id="highestScore"
+                   placeholder="Highest Score" min="0" required>
+
+            <input type="number" id="wickets"
+                   placeholder="Wickets" min="0" required>
+
+            <input type="number" id="economy"
+                   placeholder="Economy" min="0" step="0.01">
+
+            <input type="text" id="bestBowling"
+                   placeholder="Best Bowling (Example: 3/25)">
+
+            <button type="submit">Save Statistics</button>
+
+            <button type="reset">Clear Form</button>
+
+        </form>
+
+        <h2>Existing Player Statistics</h2>
+
+        <div id="statisticsContainer">
+            Loading statistics...
+        </div>
+
+        <p id="statisticsMessage"></p>
+
+    </section>
+
+    <script src="admin-statistics.js"></script>
+
+</body>
+</html>

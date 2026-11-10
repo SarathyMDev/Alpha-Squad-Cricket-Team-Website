@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Cricket News</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .news-photo-preview {
+            width: 220px;
+            height: 140px;
+            object-fit: cover;
+            display: none;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<section class="admin-news-section">
+
+    <h1>Manage Cricket News</h1>
+
+    <h2 id="formTitle">Add New News</h2>
+
+    <form id="newsForm">
+
+        <input type="hidden" id="newsId">
+
+        <input
+            type="text"
+            id="title"
+            placeholder="News Title"
+            required
+        >
+
+        <textarea
+            id="description"
+            placeholder="News Description"
+            required
+        ></textarea>
+
+        <label for="newsPhoto">Upload News Photo:</label>
+
+        <input
+            type="file"
+            id="newsPhoto"
+            accept="image/*"
+        >
+
+        <img
+            id="photoPreview"
+            class="news-photo-preview"
+            alt="News photo preview"
+        >
+
+        <input
+            type="date"
+            id="publishedDate"
+            required
+        >
+
+        <button type="submit" id="saveButton">Add News</button>
+        <button type="button" id="clearButton">Clear Form</button>
+
+    </form>
+
+    <p id="newsStatus"></p>
+
+    <h2>Existing News</h2>
+
+    <div id="newsContainer">
+        Loading news...
+    </div>
+
+</section>
+
+<script src="admin-news.js"></script>
+
+</body>
+</html>
