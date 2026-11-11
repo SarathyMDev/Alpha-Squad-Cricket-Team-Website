@@ -385,6 +385,15 @@
                     <a href="admin-home.html">Manage Home Page →</a>
                 </div>
 
+
+<div class="admin-card">
+    <div class="admin-card-icon">📩</div>
+    <h3>Contact Messages</h3>
+    <p>View customer enquiries, read messages and manage responses.</p>
+    <a href="admin-contact-messages.html">View Messages →</a>
+</div>
+
+
             </div>
 
         </section>
@@ -406,10 +415,22 @@
     <script>
 
         // Logout function
-        function logout() {
-            sessionStorage.removeItem("adminLoggedIn");
-            window.location.href = "login.html";
-        }
+       async function logout() {
+    try {
+        await fetch(
+            "https://alpha-squad-cricket-team-website.onrender.com/api/auth/logout",
+            {
+                method: "POST",
+                credentials: "include"
+            }
+        );
+    } catch (error) {
+        console.error("Logout error:", error);
+    }
+
+    sessionStorage.removeItem("adminLoggedIn");
+    window.location.href = "login.html";
+}
 
 
         // Load dashboard statistics

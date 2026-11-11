@@ -15,9 +15,10 @@ if (adminLoginForm) {
 
         try {
             const response = await fetch(
-                "https://alpha-squad-cricket-team-website.onrender.com/api/auth/login",
+               "https://alpha-squad-cricket-team-website.onrender.com/api/auth/login",
                 {
                     method: "POST",
+                    credentials: "include",
                     headers: {
                         "Content-Type": "application/json"
                     },
